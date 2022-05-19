@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Dates.scss'
-export const Dates = () => {
+import { Input } from '../Input/Input'
+export const Dates = ({edit, initialState}) => {
+  const [input, setInput] = useState(initialState)
   return (
-    <div>Dates</div>
+    <div>
+      {
+     !edit ? <h1>{input}</h1> :
+      <Input type={'date'} setInput={setInput} value={input}/>
+      }
+    </div>
   )
 }
