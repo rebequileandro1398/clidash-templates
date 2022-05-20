@@ -12,10 +12,10 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <div>
+      <div className='container-table'>
           {
             array?.map(e => (
-              <div className='container-table'>
+              <div className='container-line'>
                 <p>{e.name}</p>
                 <Dates edit={edit} initialState={e.date}/>
                 <Files edit={edit}/>

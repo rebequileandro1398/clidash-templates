@@ -4,9 +4,12 @@ App{
 
 }
 .container-table{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 3.625rem;
-    background: #F7F6FE;
+    margin-top: 5rem;
+    .container-line{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 3.625rem;
+        background: #F7F6FE;
+    }
 }
