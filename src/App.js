@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './App.scss';
-import { Dates } from './components/Dates/Dates';
-import { Files } from './components/Files/Files';
-import { MultiPhotos } from './components/MultiPhotos/MultiPhotos';
+import { Dates } from './components/Modules/Dates/Dates';
+import { Files } from './components/Modules/Files/Files';
+import { MultiPhotos } from './components/Modules/MultiPhotos/MultiPhotos';
+import { NavBar } from './components/NavBar/NavBar';
 //testing
 function App() {
   const [edit, setEdit] = useState(false)
@@ -10,16 +11,19 @@ function App() {
 
   return (
     <div className="App">
-      {
-        array?.map(e => (
-          <div className='line'>
-            <p>{e.name}</p>
-            <Dates edit={edit} initialState={e.date}/>
-            <Files edit={edit}/>
-            <MultiPhotos edit={edit}/>
-          </div>
-        ))
-      }
+      <NavBar/>
+      <div>
+          {
+            array?.map(e => (
+              <div className='container-table'>
+                <p>{e.name}</p>
+                <Dates edit={edit} initialState={e.date}/>
+                <Files edit={edit}/>
+                <MultiPhotos edit={edit}/>
+              </div>
+            ))
+          }
+      </div>
       <button onClick={()=> setEdit(!edit)}>{!edit ? 'Editar' : 'Listo'}</button>
     </div>
   );

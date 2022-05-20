@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Files.scss'
-import { Input } from '../Input/Input'
+import { Input } from '../../Input/Input'
 export const Files = ({edit}) => {
   const [input, setInput] = useState()
   

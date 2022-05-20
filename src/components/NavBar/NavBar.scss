@@ -1,0 +1,31 @@
+.nav-bar{
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    height: 4.5rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+    .paginated{
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        select{
+            width: 2.6rem;
+            height: 1.9rem;
+            border-radius: 0.4rem;
+            text-align: center;
+        }
+    }
+    .input-search{
+        width: 20rem;
+        height: 1.9rem;
+        border-radius: 1rem;
+        padding: 1rem;
+        border: #E0E0E0 solid 0.15rem;
+    }
+    .calendar{
+        position: relative;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './MultiPhotos.scss'
-import { Input } from '../Input/Input'
+import { Input } from '../../Input/Input'
 export const MultiPhotos = ({edit}) => {
   const [input, setInput] = useState()
   return (

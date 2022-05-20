@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Dates.scss'
-import { Input } from '../Input/Input'
+import { Input } from '../../Input/Input'
 export const Dates = ({edit, initialState}) => {
   const [input, setInput] = useState(initialState)
   return (
