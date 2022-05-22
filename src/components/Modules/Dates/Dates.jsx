@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import './Dates.scss'
-import { Input } from '../../Input/Input'
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+
 export const Dates = ({edit, state}) => {
-  const [input, setInput] = useState(state)
+  const [startDate, setStartDate] = useState(new Date("2021-05-23"));
+  let formatDate = startDate.toLocaleDateString()
   return (
     <div>
       {
-     !edit ? <h3>{input}</h3> :
-      <Input type={'date'} setInput={setInput} value={input}/>
+     !edit ? <h3>{formatDate}</h3> 
+      :
+      <DatePicker
+        dateFormat="dd/MM/yyyy"
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+      />
       }
     </div>
   )

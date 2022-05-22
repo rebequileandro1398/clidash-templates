@@ -41,13 +41,15 @@ function App() {
 
       <div className='container-table'>
         {currentPosts?.map(e => (
-              <div key={e.id} className='container-line'>
+              <div key={e.id} className='container-line' onContextMenu={(e) => {
+                e.preventDefault();
+                setEdit(true)
+              }}>
                 <Text 
                   setEdit={setEdit}
                   edit={edit} 
                   state={e.name}
-                  id={e.id}
-                  />
+                  id={e.id} />
                 <Number 
                   edit={edit} 
                   state={e.id}/>
@@ -58,8 +60,10 @@ function App() {
                   edit={edit} 
                   state={e.status}/>
                 <Image 
+                  setEdit={setEdit}
                   edit={edit} 
-                  state={e.image}/>
+                  state={e.image}
+                  id={e.id}/>
                 <MultipleImage
                   state={e.images}
                   edit={edit}/>

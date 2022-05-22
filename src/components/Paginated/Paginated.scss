@@ -11,5 +11,10 @@
             background: var(--color-secondary);
             color: white
         }
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+            background-color: #acacac;
+        }
     }
 }

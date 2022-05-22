@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Input = ({type, setInput, value, accept, src, onBlur, onSubmit}) => {
+export const Input = ({type, setInput, value, accept, src, onSubmit}) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -9,7 +9,6 @@ export const Input = ({type, setInput, value, accept, src, onBlur, onSubmit}) =>
             accept={accept}
             type={type} 
             value={value}
-            onBlur={onBlur}
             onChange={(e) => setInput(e.target.value)}
             />
       </form>

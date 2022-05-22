@@ -13,3 +13,7 @@ export const getData = () => async (dispatch) =>{
 export const modify = (id, data) => async () =>{
     await axios.patch(`http://localhost:5000/data/${id}`, data)     
 }
+
+export const modifyImage = (id, image) => async () =>{
+    await axios.patch(`http://localhost:5000/data/${id}`, image)     
+}

@@ -18,6 +18,11 @@
             height: 1.9rem;
             border-radius: 0.4rem;
             text-align: center;
+            transition: 0.3s;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.2);
+            }
         }
     }
     .input-search{
@@ -41,8 +46,13 @@
         display: flex;
         align-items:  center;
         justify-content: space-evenly;
+        transition: 0.3s;
         img{
             margin-top: -3px;
+        }
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
         }
     }
     .filter{
@@ -59,9 +69,14 @@
         display: flex;
         align-items:  center;
         justify-content: space-evenly;
+        transition: 0.3s;
         img{
             border-radius: 0.7rem 0.7rem ;
             
+        }
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
         }
     }
     .dark-button{
@@ -77,8 +92,13 @@
         display: flex;
         align-items:  center;
         justify-content: center;
+        transition: 0.3s;
         img{
             margin-right: .5rem;
+        }
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
         }
     }
 }
