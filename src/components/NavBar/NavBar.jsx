@@ -8,17 +8,21 @@ import plus from '../../assets/plus.svg'
 import Export from '../../assets/Export.svg'
 
 
-export const NavBar = () => {
+export const NavBar = ({setPostPerPage, selectNumber, postPerPage}) => {
     const [isOpenFilters, setIsOpenFilters] = useState(false)
     const [isOpenCalendar, setIsOpenCalendar] = useState(false)
+    let select = []
+    for (let i = 1; i < selectNumber.length; i ++) {
+        select.push({n: i})
+    }
+
   return (
     <div className='nav-bar'>
         <div className='paginated'>
             <p>Mostrar</p>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select onChange={(e)=> setPostPerPage(e.target.value)} value={postPerPage}>
+                    {select.map((e) => <option>{e.n}</option>
+                     )}
                 </select>
             <p>entradas</p>
         </div>

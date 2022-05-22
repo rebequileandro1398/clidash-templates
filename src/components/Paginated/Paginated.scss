@@ -1,0 +1,15 @@
+.paginated-container{
+    display: flex;
+    justify-content: center;
+    button{
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: .5rem;
+        border: none;
+        transition: 0.3s;
+        &:focus{
+            background: var(--color-secondary);
+            color: white
+        }
+    }
+}

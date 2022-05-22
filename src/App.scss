@@ -1,15 +1,16 @@
 App{
     width: 100vw;
     height: 100vh;
-
 }
 .container-table{
     margin-top: 5rem;
     .container-line{
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(10, 1fr);
         grid-auto-rows: 3.625rem;
+        align-items: center;
         background: #F7F6FE;
+        justify-items: center;
     }
 }

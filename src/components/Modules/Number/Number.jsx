@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import './Files.scss'
 import { Input } from '../../Input/Input'
-export const Files = ({edit, state}) => {
-  const [input, setInput] = useState(state)
+import './Number.scss'
+
+export const Number = ({edit, state}) => {
+    const [input, setInput] = useState(state)
   
   return (
     <div>
       {
      !edit ? 
       <div>
-        {input}
+        <span>#{input}</span>
         </div> :
-      <Input 
-        accept={".doc,.docx,.pdf,.xls"}
-        type={'file'} 
+      <Input
+        type={'number'} 
         setInput={setInput} 
         value={input}
         />
