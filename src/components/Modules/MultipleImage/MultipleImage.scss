@@ -2,5 +2,12 @@
     display: flex;
     max-width: 9rem;
     gap: .4rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    &:hover{
+        overflow-x: scroll;
+    }
+    img{
+        width: 2.5em;
+        border-radius: 0.5em;
+    }
 }

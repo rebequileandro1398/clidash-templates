@@ -1,0 +1,24 @@
+.container-image-text{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    img{
+        width: 2.5em;
+        border-radius: 0.5em;
+        margin-right: 8%;
+        margin-left: 20%;
+    }
+    input{
+        width: 100%;
+        background-color: #f0effb;
+        border: none;
+        font-size: 1rem;
+        &:focus{
+            outline:0px;
+        }
+    }
+    .input-text{
+        width: 100%;
+        display: flex;
+    }
+}

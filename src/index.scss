@@ -14,25 +14,32 @@ code {
 :root{
   --color-primary: #F7F6FE;
   --color-secondary: #1D1166;
-  /* ===== Scrollbar CSS ===== */
-  /* Firefox */
+  --light-green:  #EBF9F1;
+  --green: #1F9254;
+  --light-green-apple: #F6FBE7;
+  --green-apple:#7CA30D;
+  --light-purple: #E7E7FB;
+  --purple: #100DA3;
+  --light-yellow: #FBF3E7;
+  --dark-yellow:#A3670D;
+
   * {
     scrollbar-width: auto;
-    scrollbar-color: #1c1664 #ffffff;
+    scrollbar-color: #808493 #ffffff;
   }
 
-  /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 16px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
   }
 
   *::-webkit-scrollbar-track {
-    background: var(--color-primary);
+    background: #f7f6fe;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #bfbfbf;
+    background-color: #808493;
     border-radius: 10px;
+    border: 3px solid #ffffff;
   }
 }

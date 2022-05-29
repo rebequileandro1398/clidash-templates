@@ -4,17 +4,27 @@ import { Input } from '../../Input/Input'
 import { modify } from '../../redux/Actions'
 import './Text.scss'
 
-export const Text = ({edit, state, id, setEdit}) => {
+export const Text = ({ state, id,}) => {
   const dispatch = useDispatch()
   const [input, setInput] = useState(state)
+  const [isEdit, setIsEdit] = useState(false)
   const modifyText = () =>{
     dispatch(modify(id, {name: input}))
-    setEdit(false)
+    setIsEdit(false)
   }
+  const secondaryClick = (e) =>{
+    e.preventDefault()
+    setIsEdit(false)
+  }
+
+
   return (
-    <div className='container-text'>
+    <div className='container-text' 
+      onContextMenu={(e) => secondaryClick(e)}
+      onClick={() => setIsEdit(true)}
+    >
       {
-     !edit ? 
+     !isEdit ? 
        <div className='text'>
           <span>{input}</span>
       </div> :

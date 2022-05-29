@@ -19,6 +19,7 @@
             border-radius: 0.4rem;
             text-align: center;
             transition: 0.3s;
+            border: none;
             &:hover{
                 cursor: pointer;
                 transform: scale(1.2);
@@ -31,6 +32,9 @@
         border-radius: 1rem;
         padding: 1rem;
         border: #E0E0E0 solid 0.15rem;
+        &:focus{
+            outline:0px;
+        }
     }
     .calendar{
         position: relative;

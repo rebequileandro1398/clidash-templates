@@ -1,0 +1,81 @@
+@mixin button-category {
+    height: 1.9rem;
+    border: none;
+    border-radius: 1.37em;
+    font-size: 0.75em;
+    padding: 0.3em 0.75em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4.4em;
+    white-space: nowrap;
+}
+
+.container-categories{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .green-button{
+        @include button-category();
+     
+        background-color: var(--light-green);
+        color: var(--green)
+    }
+    .green-apple-button{
+        @include button-category();
+        
+        background-color: var(--light-green-apple);
+        color: var(--green-apple)
+    }
+    .purple-button{
+        @include button-category();
+    
+        background-color: var(--light-purple);
+        color: var(--purple)
+    }
+    .yellow-button{
+        @include button-category();
+        
+        background-color: var(--light-yellow);
+        color: var(--dark-yellow)
+    }
+    @keyframes select {
+        to{
+            transform: scaleY(1);
+        }
+    };
+    .select-box{
+        position: absolute;
+        display: flex;
+        flex-direction: column; 
+        gap: .5em;
+        background-color: white;
+        padding: 1em;
+        border-radius: 1.37em;
+        z-index: 20;
+        box-shadow: 0em 0em 0.625em rgb(0 0 0 / 20%);
+        transform: scaleY(0.2);
+        animation: select 0.15s 1 forwards;
+    }
+    .container{
+        width: 8em;
+        overflow-x: hidden;
+        &:hover{
+            overflow-x: scroll;
+        }
+        .container-elements{
+            width: 100%;
+            display: flex;
+            gap: .5rem;
+        }
+    }
+    .plus{
+        background-color: transparent;
+        border: none;
+        color: rgb(186, 186, 186);
+        width: 100%;
+        cursor: pointer;
+    }
+}

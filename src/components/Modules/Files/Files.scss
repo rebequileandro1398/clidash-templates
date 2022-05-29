@@ -1,0 +1,22 @@
+.container-file{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .file{
+        display: flex;
+        align-items: center;
+        padding-left: .3em;
+        background-color: #F2F2F2;
+        width: 69px;
+        height: 31px;
+        border-radius: 22px;
+        p{
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow: ellipsis;
+            text-align: center;
+
+        }
+    }
+}

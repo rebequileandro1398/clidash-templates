@@ -7,8 +7,8 @@ import { MultipleImage } from './components/Modules/MultipleImage/MultipleImage'
 import { NavBar } from './components/NavBar/NavBar';
 import { getData } from './components/redux/Actions';
 import { Text } from './components/Modules/Text/Text'
-import { Categories } from './components/Modules/Categories/Categories';
-import {MultiSelect} from './components/Modules/MultiSelect/MultiSelect'
+import { Select } from './components/Modules/Select/Select';
+import {MultiSelect} from './components/Modules/Select/MultiSelect'
 import { Image } from './components/Modules/Image/Image';
 import { ImageAndText } from './components/Modules/ImageAndText/ImageAndText';
 import { CheckBox } from './components/Modules/CheckBox/CheckBox';
@@ -16,22 +16,40 @@ import { Number } from './components/Modules/Number/Number';
 import Paginated from './components/Paginated/Paginated';
 //testing
 function App() {
-
-  useEffect(() => {dispatch(getData())}, [])
   const dispatch = useDispatch()
+  useEffect(() => {dispatch(getData())},[dispatch])
   const getAllElemets = useSelector(state => state.table)
   const [edit, setEdit] = useState(false)
   
-      //paginado
+      //paginated
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
     
   const indexOfLast = currentPage * postPerPage;
   const indexOfFirst = indexOfLast - postPerPage
   const currentPosts = getAllElemets?.slice(indexOfFirst, indexOfLast) 
-  const paginado = (pageNum) => {
-        setCurrentPage(pageNum)
+  const options = [
+    {
+      text: 'completado',
+     color: 'purple'
+    },
+    {
+      text: 'en distribucion',
+      color: 'green'
+    },
+    {
+      text: 'pagado',
+      color: 'green-apple'
+    },
+    {
+      text: 'en espera',
+      color: 'yellow'
+    },
+    {
+      text: 'cancelado',
+      color: 'purple'
     }
+  ]
   return (
     <div className="App">
       <NavBar 
@@ -41,35 +59,54 @@ function App() {
 
       <div className='container-table'>
         {currentPosts?.map(e => (
-              <div key={e.id} className='container-line' onContextMenu={(e) => {
-                e.preventDefault();
-                setEdit(true)
-              }}>
+              <div key={e.id} className='container-line'>
+
                 <Text 
-                  setEdit={setEdit}
-                  edit={edit} 
                   state={e.name}
-                  id={e.id} />
+                  id={e.id} 
+                  />
+
                 <Number 
-                  edit={edit} 
-                  state={e.id}/>
-                <Categories 
-                  edit={edit} 
-                  state={e.categoria}/>
+                  state={e.number}
+                  id={e.id}
+                  />
+
+                <Select 
+                  state={e.status}
+                  id={e.id}
+                  options={options}
+                  />
+
                 <MultiSelect 
                   edit={edit} 
-                  state={e.status}/>
+                  state={e.multiple}
+                  options={options}
+                  id={e.id}
+                  />
+
                 <Image 
                   setEdit={setEdit}
                   edit={edit} 
                   state={e.image}
-                  id={e.id}/>
+                  id={e.id}
+                  />
+
                 <MultipleImage
                   state={e.images}
-                  edit={edit}/>
-                <ImageAndText/>
+                  edit={edit}
+                  id={e.id}
+                  />
+
+
+                <ImageAndText
+                  state={e.profile}
+                  id={e.id}
+                />
+
                 <Files 
-                  edit={edit}/>
+                  state={e.file}
+                  id={e.id}
+                  />
                 <CheckBox/>
                 <Dates 
                   edit={edit} 
@@ -78,12 +115,11 @@ function App() {
             ))
         }
       </div>
-
-      <button onClick={()=> setEdit(!edit)}>{!edit ? 'Editar' : 'Listo'}</button>
       <Paginated
           postsPerPage={postPerPage}
           totalPosts={getAllElemets.length}
-          paginado={paginado}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
       />
     </div>
   );
