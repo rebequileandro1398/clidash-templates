@@ -27,7 +27,6 @@ export const MultipleImage = ({ state, id}) => {
       {
       preview?.map(e => {
       let index = preview.findIndex(i => i.photo === e.photo)
-      
       return <div>
           <img width={40} src={e.photo} alt='multiple image' onClick={(e)=> {
             e.preventDefault();

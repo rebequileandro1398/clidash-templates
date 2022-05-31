@@ -22,12 +22,14 @@ export const Image = ({edit, state, id, setEdit}) => {
   return (
     <div className='container-image'>
         <div> 
-          <img src={preview} alt="selleccione" onClick={(e)=> {
+          <img src={preview} alt="selleccione" 
+            onClick={(e)=> {
             e.preventDefault();
             fileRef.current.click()}}/>
             <input 
               accept='image/*'
-              type="file" ref={fileRef} 
+              type="file" 
+              ref={fileRef} 
               style={{display: 'none'}}
               onChange={(e) => upLoadImage(e)}
               />

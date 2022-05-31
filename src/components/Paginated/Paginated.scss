@@ -7,13 +7,14 @@
     .button-list{
         display: flex;
         justify-content: space-around;
-        width: 12em;
+        min-width: 12em;
         button{
             width: 1.9em;
             height: 1.9em;
             border-radius: .5em;
             border: none;
             transition: 0.2s;
+            margin: .5em;
             &:focus{
                 background: var(--color-secondary);
                 color: white

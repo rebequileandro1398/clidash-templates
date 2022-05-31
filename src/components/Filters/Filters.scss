@@ -1,11 +1,46 @@
 .filters-container{
     position: absolute;
     top: 122%;
-    width: 14rem;
-    height: 19rem;
+    width: 14em;
+    height: 19em;
     background: white;
     border: 1px solid #C6C2DE;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+    border-radius: 1.25em;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container{
+        width: 90%;
+        height: 90%;
+    }
+    
+    .custom-radio 
+        input::before{
+        content: '';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid gray;
+        margin-left: -2px;
+        margin-top: -2px;
+      }
+      
+      .custom-radio input:checked::before{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        box-sizing: border-box;
+        border: 6px solid #6c5fcc;
+        padding: 3px;
+        margin-left: -2px;
+        margin-top: -2px;
+      }
 }

@@ -2,6 +2,16 @@
     width: 100%;
     display: flex;
     align-items: center;
+    
+    .span-container{
+        width: 8em;
+        display: block;
+        p{
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow: ellipsis;
+        }
+    }
     img{
         width: 2.5em;
         border-radius: 0.5em;

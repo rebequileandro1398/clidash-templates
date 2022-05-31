@@ -1,6 +1,5 @@
 .container-text{
     width: 100%;
-    padding-left: 2rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -8,7 +7,7 @@
     input{
         background-color:  #f0effc;;
         border: none;
-        font-size: 1rem;
+        font-size: 1em;
         &:focus{
             outline:0px;
         }

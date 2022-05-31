@@ -1,5 +1,5 @@
 @mixin button-category {
-    height: 1.9rem;
+    height: 2.2em;
     border: none;
     border-radius: 1.37em;
     font-size: 0.75em;
@@ -68,7 +68,7 @@
         .container-elements{
             width: 100%;
             display: flex;
-            gap: .5rem;
+            gap: .5em;
         }
     }
     .plus{

@@ -12,5 +12,14 @@ export const getData = () => async (dispatch) =>{
 }
 export const modify = (id, data) => async (dispatch) =>{
     await axios.patch(`${REACT_APP_API}/${id}`, data)
-    dispatch(getData())   
+    .then(res => {
+        dispatch(getData())   
+        console.log(res)
+    })
+}
+export const onSearch = (value) => (dispatch) => {
+    dispatch({
+        type: 'SEARCH',
+        payload: value
+    })
 }

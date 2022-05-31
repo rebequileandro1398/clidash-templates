@@ -54,7 +54,7 @@ export const MultiSelect = ({state, options, id}) => {
           {!preview.length && <button className='plus'>+</button>}
               {preview?.map(element => {
                 let indexInput = preview.findIndex(i => i === element)
-                return <div>
+                return <div key={indexInput}>
                   <button className={`${element?.color}-button`} 
                     onContextMenu={(e) => {
                     e.preventDefault()

@@ -61,7 +61,10 @@ export const ImageAndText = ({ state, id}) => {
                 value={input.name}
                 onChange={(e) => setInput({...input, name: e.target.value})}
                 />
-              </form> : <span>{input.name}</span>
+              </form> : 
+              <div className='span-container'>
+                <p>{input.name}</p>
+              </div>
               }
           </div>
     </div>

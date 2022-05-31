@@ -14,20 +14,24 @@ import { ImageAndText } from './components/Modules/ImageAndText/ImageAndText';
 import { CheckBox } from './components/Modules/CheckBox/CheckBox';
 import { Number } from './components/Modules/Number/Number';
 import Paginated from './components/Paginated/Paginated';
+import { HeaderModules } from './components/headerModules/HeaderModules';
 //testing
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {dispatch(getData())},[dispatch])
   const getAllElemets = useSelector(state => state.table)
+  const getSearch = useSelector(state => state.search)
   const [edit, setEdit] = useState(false)
-  
       //paginated
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
-    
   const indexOfLast = currentPage * postPerPage;
   const indexOfFirst = indexOfLast - postPerPage
-  const currentPosts = getAllElemets?.slice(indexOfFirst, indexOfLast) 
+  let currentPosts = getAllElemets?.slice(indexOfFirst, indexOfLast) 
+  if(getSearch.length){
+    currentPosts = getSearch?.slice(indexOfFirst, indexOfLast) 
+  }
+
   const options = [
     {
       text: 'completado',
@@ -56,11 +60,9 @@ function App() {
         setPostPerPage={setPostPerPage} 
         postPerPage={postPerPage} 
         selectNumber={getAllElemets}/>
-
       <div className='container-table'>
-        {currentPosts?.map(e => (
+        { currentPosts?.map(e => (
               <div key={e.id} className='container-line'>
-
                 <Text 
                   state={e.name}
                   id={e.id} 

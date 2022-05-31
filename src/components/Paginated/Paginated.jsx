@@ -17,7 +17,7 @@ const Paginated = ({postsPerPage, totalPosts, setCurrentPage, currentPage}) => {
            <div className="button-list">
             {
                 pageNumber?.map(number => (
-                    <button onClick={()=> setCurrentPage(number)}>
+                    <button key={number} onClick={()=> setCurrentPage(number)}>
                         {number}
                     </button>
                 ))
