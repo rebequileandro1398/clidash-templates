@@ -12,12 +12,25 @@
     align-items: center;
     justify-content: center;
 
-    .container{
-        width: 90%;
-        height: 90%;
+    .sort-by-container{
+        width: 85%;
+        height: 95%;
+
+        p{
+          color: #6e6991;
+        }
     }
-    
-    .custom-radio 
+    .options-container{
+      display: flex;
+      flex-direction: column;
+    }
+    .custom-radio {
+      width: 100%;
+      display:  flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
         input::before{
         content: '';
         display: flex;
@@ -42,5 +55,11 @@
         padding: 3px;
         margin-left: -2px;
         margin-top: -2px;
+      }
+      h2{
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 0.87em;
+        color: #25223a;
       }
 }

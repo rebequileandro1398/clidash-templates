@@ -23,3 +23,9 @@ export const onSearch = (value) => (dispatch) => {
         payload: value
     })
 }
+export const sortBy = (value) => (dispatch) =>{
+    dispatch({
+        type: "SORT_BY",
+        payload: value
+    })
+}
