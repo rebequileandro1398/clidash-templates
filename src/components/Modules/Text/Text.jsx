@@ -4,13 +4,22 @@ import { Input } from '../../Input/Input'
 import { modify } from '../../redux/Actions'
 import './Text.scss'
 
-export const Text = ({ state, id,}) => {
+export const Text = ({ state, id, newInput, setNewInput}) => {
   const dispatch = useDispatch()
-  const [input, setInput] = useState(state)
+  const [input, setInput] = useState(state && state)
   const [isEdit, setIsEdit] = useState(false)
-  const modifyText = () =>{
-    dispatch(modify(id, {name: input}))
-    setIsEdit(false)
+  const modifyText = (e) =>{
+    if(state) {
+      dispatch(modify(id, {name: input}))
+      setIsEdit(false)
+    } else {
+      e.preventDefault()
+      setNewInput({
+        ...newInput,
+        name: input
+      })
+      setIsEdit(false)
+    }
   }
   const secondaryClick = (e) =>{
     e.preventDefault()
@@ -24,7 +33,7 @@ export const Text = ({ state, id,}) => {
       onClick={() => setIsEdit(true)}
     >
       {
-     !isEdit ? 
+     !isEdit && state ? 
        <div className='text'>
           <span>{input}</span>
       </div> :
@@ -32,7 +41,7 @@ export const Text = ({ state, id,}) => {
         type={'text'} 
         setInput={setInput} 
         value={input}
-        onSubmit={() => modifyText()}
+        onSubmit={(e) => modifyText(e)}
         />
       }
     </div>

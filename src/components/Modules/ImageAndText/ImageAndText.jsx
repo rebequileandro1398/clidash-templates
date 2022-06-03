@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react'
 import './ImageAndText.scss'
 import { useDispatch } from 'react-redux'
+import camera from '../../../assets/Camera.svg'
 import { modify } from '../../redux/Actions'
-export const ImageAndText = ({ state, id}) => {
+export const ImageAndText = ({ state, id , newInput, setNewInput}) => {
   const [isEdit, setIsEdit] = useState(false)
   const [input, setInput] = useState({
-    photo: state.photo,
-    name: state.name
+    photo: state ? state.photo : camera,
+    name: state && state.name
   })
 
   const dispatch = useDispatch()
@@ -20,20 +21,40 @@ export const ImageAndText = ({ state, id}) => {
           setInput({
             ...input,
             photo: reader.result})
-          dispatch(modify(id, { profile: {
-              photo: reader.result,
-              name: input.name
-          }}))
+            if(state) {
+              dispatch(modify(id, { profile: {
+                  photo: reader.result,
+                  name: input.name
+              }}))
+            } else {
+              setNewInput({
+                ...newInput,
+                profile:{  
+                  photo: reader.result,
+                  name: input.name
+              }
+            })
+          }
         }
         reader.readAsDataURL(file)
       }
   }
   const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(modify(id, { profile: {
-          photo: input.photo,
-          name: input.name
-      }}))
+        if(state) {
+            dispatch(modify(id, { profile: {
+              photo: input.photo,
+              name: input.name
+          }}))
+        } else {
+          setNewInput({
+            ...newInput,
+            profile:{  
+              photo: input.photo,
+              name: input.name
+          }
+        })
+      }
       setIsEdit(false)
   }
   const noEdit = (e) => {
@@ -55,16 +76,19 @@ export const ImageAndText = ({ state, id}) => {
           <div className='input-text' 
             onClick={() => setIsEdit(true)} 
             onContextMenu={(e) => noEdit(e)}>
-            { isEdit ? <form onSubmit={(e) => handleSubmit(e)}>
+            {!isEdit && state ? 
+               <div className='span-container'>
+                <p>{input.name}</p>
+              </div> 
+              :
+              <form onSubmit={(e) => handleSubmit(e)}>
                 <input 
                 type="text" 
                 value={input.name}
                 onChange={(e) => setInput({...input, name: e.target.value})}
                 />
-              </form> : 
-              <div className='span-container'>
-                <p>{input.name}</p>
-              </div>
+              </form> 
+             
               }
           </div>
     </div>

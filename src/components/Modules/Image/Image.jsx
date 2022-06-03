@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Input } from '../../Input/Input'
+import camera from '../../../assets/Camera.svg'
 import { modify } from '../../redux/Actions'
 import './Image.scss'
-export const Image = ({edit, state, id, setEdit}) => {
-  const [preview, setPreview] = useState(state)
+export const Image = ({edit, state, id, setNewInput, newInput}) => {
+  const [preview, setPreview] = useState(state ? state : camera)
   const dispatch = useDispatch()
   const fileRef = useRef()
 
@@ -14,7 +14,14 @@ export const Image = ({edit, state, id, setEdit}) => {
         const reader = new FileReader()
         reader.onloadend = () => {
           setPreview(reader.result)
-          dispatch(modify(id, {image: reader.result}))
+          if(state) {
+            dispatch(modify(id, {image: reader.result}))
+          } else {
+            setNewInput({
+              ...newInput,
+              image: reader.result
+            })
+          }
         }
         reader.readAsDataURL(file)
       }

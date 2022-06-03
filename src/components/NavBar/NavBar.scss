@@ -18,12 +18,13 @@
         align-items: center;
         gap: 0.7em;
         select{
-            width: 2.6em;
-            height: 1.9em;
-            border-radius: 0.4em;
+            width: 3em;
+            height: 2.3em;
+            border-radius: 0.6em;
             text-align: center;
             transition: 0.3s;
             border: none;
+            background-color: #e0e0e0;
             &:hover{
                 cursor: pointer;
                 transform: scale(1.2);
@@ -47,8 +48,12 @@
         border: #E0E0E0 solid 0.15em;
         padding-left: 2.5em;
         padding-right: 1em;
+        transition: 0.2s;
         &:focus{
             outline:0px;
+        }
+        &:hover{
+            box-shadow: 0px 0px 0.625em rgba(0, 0, 0, 0.2);
         }
     }
     .calendar{

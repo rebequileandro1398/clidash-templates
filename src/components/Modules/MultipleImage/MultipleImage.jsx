@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './MultipleImage.scss'
-import { Input } from '../../Input/Input'
+import camera from '../../../assets/Camera.svg'
 import { useDispatch } from 'react-redux'
 import { modify } from '../../redux/Actions'
 export const MultipleImage = ({ state, id}) => {
-  const [preview, setPreview] = useState(state)
+  const [preview, setPreview] = useState(state ? state : [{photo: camera}, {photo: camera}, {photo: camera}])
   const dispatch = useDispatch()
   const fileRef = useRef()
 

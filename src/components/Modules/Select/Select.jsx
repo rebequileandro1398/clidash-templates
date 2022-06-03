@@ -4,9 +4,9 @@ import { modify } from '../../redux/Actions'
 import './Select.scss'
 
 
-export const Select = ({ state, id, options}) => {
+export const Select = ({ state, id, options, newInput, setNewInput}) => {
   const dispatch = useDispatch()
-  const [input, setInput] = useState(state)
+  const [input, setInput] = useState(state && state)
   const [isEdit, setIsEdit] = useState(false)
   const [colors, setColors] = useState('green')
   useEffect(() => {
@@ -24,16 +24,27 @@ export const Select = ({ state, id, options}) => {
     setIsEdit(false)
   }
   const onHandleChange = (value, color) => {
-    setColors(color) 
-    setInput(value)
-    modifySelect(value)
+    if(state) {
+      setColors(color) 
+      setInput(value)
+      modifySelect(value)
+    } else {
+      setColors(color) 
+      setInput(value)
+      setNewInput({
+        ...newInput,
+        status: value
+      })
+      setIsEdit(false)
+    }
   }
 
   return (
     <div className='container-categories'>
       <div>
        <div onClick={() => setIsEdit(true)}>
-          <button className={`${colors}-button`}>{input}</button>
+          {!input ? <button className='plus'>+</button> :
+          <button className={`${colors}-button`}>{input}</button>}
       </div>
       </div>
       {isEdit &&

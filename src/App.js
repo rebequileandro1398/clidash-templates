@@ -15,13 +15,14 @@ import { CheckBox } from './components/Modules/CheckBox/CheckBox';
 import { Number } from './components/Modules/Number/Number';
 import Paginated from './components/Paginated/Paginated';
 import { HeaderModules } from './components/headerModules/HeaderModules';
+import { NewLine } from './components/NewLine/NewLine';
 //testing
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {dispatch(getData())},[dispatch])
   const getAllElemets = useSelector(state => state.table)
   const getSearch = useSelector(state => state.search)
-  const [edit, setEdit] = useState(false)
+  const [newLine, setNewLine] = useState(false)
       //paginated
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
@@ -57,12 +58,16 @@ function App() {
   return (
     <div className="App">
       <NavBar 
+        newLine={newLine}
+        setNewLine={setNewLine}
         setPostPerPage={setPostPerPage} 
         postPerPage={postPerPage} 
         selectNumber={getAllElemets}/>
       <div className='container-table'>
+        {newLine && <NewLine selectOptions={options}/>}
         { currentPosts?.map(e => (
               <div key={e.id} className='container-line'>
+
                 <Text 
                   state={e.name}
                   id={e.id} 
@@ -80,22 +85,18 @@ function App() {
                   />
 
                 <MultiSelect 
-                  edit={edit} 
                   state={e.multiple}
                   options={options}
                   id={e.id}
                   />
 
                 <Image 
-                  setEdit={setEdit}
-                  edit={edit} 
                   state={e.image}
                   id={e.id}
                   />
 
                 <MultipleImage
                   state={e.images}
-                  edit={edit}
                   id={e.id}
                   />
 
@@ -109,9 +110,11 @@ function App() {
                   state={e.file}
                   id={e.id}
                   />
+
                 <CheckBox/>
+
                 <Dates 
-                  edit={edit} 
+                  id={e.id}
                   state={e.date}/>
               </div>
             ))

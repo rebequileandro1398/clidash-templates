@@ -9,4 +9,38 @@
         align-items: center;
         justify-content: flex-end;
     }
+    .react-datepicker__header {
+        text-align: center;
+        background-color: white;
+        border-bottom: 0px;
+        border-top: 1.25em;
+        padding-top: 8px;
+        position: relative;
+      }
+    
+    .react-datepicker__day{
+        &--in-selecting-range{
+            background-color: #1c1166be;
+        }
+        &--selected,
+        &--in-range {
+          border-radius:5px;
+          background-color: var(--color-secondary);
+          color: #fff;
+        }
+    }
+    .calendar-picker{
+        width: 100%;
+        padding-left: 50%;
+    }
+    input{
+        border: none;
+        width: 8em;
+        background-color: #f0effb;
+        font-weight: 500;
+        font-size: 0.87em;
+        &:focus {
+            outline: none;
+        }
+    }
 }

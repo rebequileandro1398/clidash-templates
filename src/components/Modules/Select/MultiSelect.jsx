@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux'
 import { modify } from '../../redux/Actions'
 import './Select.scss'
 
-export const MultiSelect = ({state, options, id}) => {
+export const MultiSelect = ({state, options, id, newInput, setNewInput}) => {
 
   const [isEdit, setIsEdit] = useState(false)
   const dispatch = useDispatch()
-  const [input, setInput] = useState(state)
+  const [input, setInput] = useState(state ? state : [])
   const [preview, setPreview] = useState([])
   
   useEffect(() => {
@@ -30,12 +30,28 @@ export const MultiSelect = ({state, options, id}) => {
   const onHandleChange = (value, color) => {
     const exists = preview.filter(e => e.text === value)
     if(!exists.length){
-      setPreview([...preview, {
-        text: value,
-        color: color
-      }])
-      setInput(input.concat(value))
-      modifySelect(input.concat(value))
+      if(state) {
+        setPreview([...preview, {
+          text: value,
+          color: color
+        }])
+        setInput(input.concat(value))
+        modifySelect(input.concat(value))
+      } else {
+        setPreview([...preview, {
+          text: value,
+          color: color
+        }])
+        setInput(input.concat(value))
+        let newValue = [...input]
+        newValue = newValue.concat(value)
+        console.log(newValue)
+        setNewInput({
+          ...newInput,
+          multiple: newValue
+        })
+        setIsEdit(false)
+      }
     }
   }
  
@@ -45,7 +61,10 @@ export const MultiSelect = ({state, options, id}) => {
     let removeElement = input.filter(e => e !== input[index])
     setPreview(removePreview)
     setInput(removeElement)
-    modifySelect(removeElement)
+    if(state) {
+      modifySelect(removeElement)
+      setNewInput()
+    } 
   }
   return (
     <div className='container-categories'>

@@ -12,7 +12,7 @@ import logo from '../../assets/LOGO.svg'
 import searchIcon from '../../assets/search.svg'
 import { useDispatch } from 'react-redux';
 import { onSearch } from '../redux/Actions';
-export const NavBar = ({setPostPerPage, selectNumber, postPerPage}) => {
+export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, newLine}) => {
     const dispatch = useDispatch()
     const [isOpenFilters, setIsOpenFilters] = useState(false)
     const [isOpenCalendar, setIsOpenCalendar] = useState(false)
@@ -67,7 +67,7 @@ export const NavBar = ({setPostPerPage, selectNumber, postPerPage}) => {
                 {isOpenFilters && <Filters/>}
             </div>
             <div>
-                <button className='dark-button'>
+                <button className='dark-button' onClick={() => setNewLine(!newLine)}>
                     <img src={plus} alt="add"/>
                     Anadir nuevo
                 </button>
