@@ -1,8 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { modify } from '../../redux/Actions'
 import './ToggleSwitch.scss'
-export const ToggleSwitch = ({size = "default", checked, disabled, onChange}) => { 
-    let displayStyle = checked ? "btn-success" : "btn-danger";
-    const checkboxRef = useRef()
+export const ToggleSwitch = ({size = "default", disabled, status, id}) => { 
+  
+  const checkboxRef = useRef()
+  const [toggle, setToggle] = useState(status)
+
+  const dispatch = useDispatch()
+
+  const handleToggleSwitch = (e) => {
+    setToggle(e.target.checked)
+    dispatch(modify(id, {state: e.target.checked}))
+  }
+  
+  let displayStyle = toggle ? "btn-success" : "btn-danger";
+
+console.log(toggle)
+
   return (
       <button className='switch-container' >
         <div className={`${size} switch-wrapper`}  
@@ -11,9 +26,9 @@ export const ToggleSwitch = ({size = "default", checked, disabled, onChange}) =>
             checkboxRef.current.click()}}>
             <input
             type="checkbox"
-            checked={checked}
+            checked={toggle}
             disabled={disabled}
-            onChange={e => onChange(e)}
+            onChange={e => handleToggleSwitch(e)}
             ref={checkboxRef}
             style={{display: 'none'}}
             />

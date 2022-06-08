@@ -5,10 +5,7 @@ import { ToggleSwitch } from '../ToggleSwitch/ToggleSwitch'
 import './CheckBox.scss'
 export const CheckBox = ({id}) => {
   const dispatch = useDispatch()
-  const [toggle, setToggle] = useState(false)
-  const handleToggleSwitch = (e) => {
-      setToggle(e.target.checked)
-  }
+
   const checked = (e) => {
     if(e.target.checked){
       dispatch(addSheetData(id))
@@ -19,10 +16,6 @@ export const CheckBox = ({id}) => {
   return (
     <div className='container-checkbox'>
         <input className='checkbox' type="checkbox" onChange={(e) => checked(e)}/>
-        <ToggleSwitch
-          checked={toggle}
-          onChange={handleToggleSwitch}
-          />
     </div>
   )
 }

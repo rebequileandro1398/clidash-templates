@@ -15,6 +15,7 @@ import { CheckBox } from './components/Modules/CheckBox/CheckBox';
 import { Number } from './components/Modules/Number/Number';
 import Paginated from './components/Paginated/Paginated';
 import { NewLine } from './components/NewLine/NewLine';
+import { ToggleSwitch } from './components/Modules/ToggleSwitch/ToggleSwitch';
 //testing
 function App() {
   const dispatch = useDispatch()
@@ -123,7 +124,12 @@ function App() {
 
                 <Dates 
                   id={e.id}
-                  state={e.date}/>
+                  state={e.date}
+                  />
+                <ToggleSwitch
+                  id={e.id}
+                  status={e.state}
+                />
               </div>
             ))
         }
