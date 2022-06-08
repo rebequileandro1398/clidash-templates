@@ -34,3 +34,15 @@ export const sortBy = (value) => (dispatch) =>{
         payload: value
     })
 }
+export const addSheetData = (id) => (dispatch) => {
+    dispatch({
+        type: "ADD_SHEET_DATA",
+        payload: id
+    })
+}
+export const removeSheetData = (id) => (dispatch) => {
+    dispatch({
+        type: "REMOVE_SHEET_DATA",
+        payload: id
+    })
+}

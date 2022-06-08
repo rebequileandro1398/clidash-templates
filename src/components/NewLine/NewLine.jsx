@@ -12,7 +12,7 @@ import { Select } from '../Modules/Select/Select'
 import { Text } from '../Modules/Text/Text'
 import { newElement } from '../redux/Actions'
 import './NewLine.scss'
-export const NewLine = ({selectOptions}) => {
+export const NewLine = ({selectOptions, anchor}) => {
     const dispatch = useDispatch()
     const [newInput, setNewInput] = useState({
         id: new Date().getTime(),
@@ -36,7 +36,7 @@ export const NewLine = ({selectOptions}) => {
     }
 
   return (
-    <div className='container-line' id='new-line'>
+    <div className='container-line' id='new-line' ref={anchor}>
 
     <Text 
         setNewInput={setNewInput} 

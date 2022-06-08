@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { sortBy } from '../redux/Actions'
+import { getData, sortBy } from '../redux/Actions'
 import './Filters.scss'
 export const Filters = () => {
   const dispatch = useDispatch()
@@ -8,7 +8,11 @@ export const Filters = () => {
   
   const handleChange = (e) => {
     setSort(e.target.value)
-   dispatch(sortBy(e.target.value))
+    if(e.target.value === 'default-sort') {
+      dispatch(getData())
+    } else {
+        dispatch(sortBy(e.target.value))
+    }
   }
   return (
     <div className='filters-container'>

@@ -10,13 +10,15 @@ import { HeaderModules } from '../headerModules/HeaderModules';
 import arrows from '../../assets/arrows.svg'
 import logo from '../../assets/LOGO.svg'
 import searchIcon from '../../assets/search.svg'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { onSearch } from '../redux/Actions';
+import * as XLSX from 'xlsx/xlsx.mjs'
 export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, newLine}) => {
     const dispatch = useDispatch()
     const [isOpenFilters, setIsOpenFilters] = useState(false)
     const [isOpenCalendar, setIsOpenCalendar] = useState(false)
     const [search, setSearch] = useState('')
+    const sheetData = useSelector(state => state.sheetData)
     let select = []
     for (let i = 1; i < selectNumber.length; i ++) {
         select.push({n: i})
@@ -26,7 +28,15 @@ export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, n
         setSearch(e.target.value)
         dispatch(onSearch(e.target.value))
     }
-
+    const handleOnExport = () => {
+        let wb = XLSX.utils.book_new();
+        let ws = XLSX.utils.json_to_sheet(sheetData);
+        XLSX.utils.book_append_sheet(wb, ws, "table");
+        XLSX.writeFile(wb, "clidashTemplate.xlsx");
+    }
+    const handleClickNew = () => {
+        setNewLine(!newLine)
+    }
   return (
     <div className='nav-bar'>
         <div className='horizontal-line'> 
@@ -67,13 +77,13 @@ export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, n
                 {isOpenFilters && <Filters/>}
             </div>
             <div>
-                <button className='dark-button' onClick={() => setNewLine(!newLine)}>
+                <button className='dark-button' onClick={() => handleClickNew()}>
                     <img src={plus} alt="add"/>
                     Anadir nuevo
                 </button>
             </div>
             <div>
-                <button className='dark-button'>
+                <button className='dark-button' onClick={() => handleOnExport()}>
                     <img src={Export} alt="export"/>
                     Exportar
                 </button>

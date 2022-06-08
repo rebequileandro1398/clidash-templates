@@ -7,6 +7,8 @@ App{
     padding-left: 1em;
     padding-right: 1em;
     background: #F7F6FE;
+    overflow-x: scroll;
+
     .container-line{
         width: 100%;
         display: grid;
@@ -15,5 +17,11 @@ App{
         align-items: center;
         background: #F7F6FE;
         justify-items: center;
+    }
+    @media (max-width: 540px){
+        .container-line{
+            grid-template-columns: repeat(3, 1fr);
+          
+        }
     }
 }

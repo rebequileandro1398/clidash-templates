@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 import { Dates } from './components/Modules/Dates/Dates';
@@ -14,15 +14,19 @@ import { ImageAndText } from './components/Modules/ImageAndText/ImageAndText';
 import { CheckBox } from './components/Modules/CheckBox/CheckBox';
 import { Number } from './components/Modules/Number/Number';
 import Paginated from './components/Paginated/Paginated';
-import { HeaderModules } from './components/headerModules/HeaderModules';
 import { NewLine } from './components/NewLine/NewLine';
 //testing
 function App() {
   const dispatch = useDispatch()
+  const [newLine, setNewLine] = useState(false)
   useEffect(() => {dispatch(getData())},[dispatch])
+  useEffect(() => {
+    newLine && anchor.current.scrollIntoView({behavior: 'smooth'})
+  }, [newLine])
+  
   const getAllElemets = useSelector(state => state.table)
   const getSearch = useSelector(state => state.search)
-  const [newLine, setNewLine] = useState(false)
+  const anchor = useRef()
       //paginated
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
@@ -55,16 +59,18 @@ function App() {
       color: 'purple'
     }
   ]
+  console.log(anchor)
   return (
     <div className="App">
       <NavBar 
         newLine={newLine}
         setNewLine={setNewLine}
+        anchor={anchor}
         setPostPerPage={setPostPerPage} 
         postPerPage={postPerPage} 
         selectNumber={getAllElemets}/>
       <div className='container-table'>
-        {newLine && <NewLine selectOptions={options}/>}
+        {newLine && <NewLine anchor={anchor} selectOptions={options}/>}
         { currentPosts?.map(e => (
               <div key={e.id} className='container-line'>
 
@@ -111,7 +117,9 @@ function App() {
                   id={e.id}
                   />
 
-                <CheckBox/>
+                <CheckBox
+                id={e.id} 
+                />
 
                 <Dates 
                   id={e.id}

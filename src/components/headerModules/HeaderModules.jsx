@@ -5,7 +5,7 @@ export const HeaderModules = ({head}) => {
     <div className='header-modules-container'>
         <div className='text-container'>
             {head?.map(title => (
-                <div className='item'>
+                <div key={title.name} className='item'>
                     <h3>{title.name}</h3>
                     {title?.image && <img src={title.image} alt='arrow'/>}
                 </div>

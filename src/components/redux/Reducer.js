@@ -1,7 +1,8 @@
 const initialState = {
     table: [],
     search: [],
-    filter: []
+    filter: [],
+    sheetData: [],
  }
  
  
@@ -41,6 +42,33 @@ const initialState = {
                 ...state,
                 table: data.map(e => e)
             }
+        case "ADD_SHEET_DATA":
+            let noImage;
+            state.table.filter(e => {
+                if(e.id === action.payload) {
+                     noImage = {
+                        id: e.id,
+                        name: e.name,
+                        number: e.number,
+                        date: e.date,
+                        status: e.status,
+                        multiple: e.multiple,
+                        image: e.image,
+                        images: e.images
+                    }
+                }
+            })
+            return {
+                ...state,
+                sheetData: state.sheetData.concat(noImage)
+            }
+        case "REMOVE_SHEET_DATA":
+            let removeData = state.sheetData.filter(e => e.id !== action.payload)
+            return {
+                ...state,
+                sheetData: removeData
+            }
+
          default: 
              return state;
      }

@@ -1,0 +1,63 @@
+.switch-container{
+    width: 3.12rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    .switch-wrapper  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    }
+    .switch-wrapper > input[type="checkbox"] + .switch {
+        transform: translateX(0.125rem);
+        transition: 0.2s;
+    }
+    .switch-wrapper > input[type="checkbox"]:checked + .switch {
+        transform: translateX(50%) translateX(-1.25rem);
+        transition: 0.2s;
+    }
+    .switch-wrapper.large > input[type="checkbox"]:checked + .switch {
+        transform: translateX(50%) translateX(-1.563rem);
+        transition: 0.2s;
+    }
+    .switch-wrapper > input[type="checkbox"]:disabled + .switch {
+        background: #ccc;
+    }
+    .switch-wrapper {
+        border-radius: 1.25rem;
+        cursor: pointer;
+        height: 1.37rem;
+        overflow: hidden;
+        position: relative;
+        width: 2.87rem;
+        background-color: #ebf9f1;
+    }
+    .switch-wrapper .switch {
+        color: #fff;
+        height: 100%;
+        left: -100%;
+        position: relative;
+        transition: 100ms linear;
+        width: 200%;
+    }
+    .switch-wrapper .switch-handle {
+        background: #9f9f9f;
+        border-radius: 50%;
+        height: 1.12rem;
+        width: 1.12rem;
+        left: 50%;
+        position: relative;
+        top: 0.125rem;
+        z-index: 3;
+    }
+    .btn-success {
+    color: #fff;
+    background-color:  #46e45a;
+        .switch-handle{
+            background: #ffffff
+        }
+    }
+    .btn-danger{
+        color: #fff;
+        background-color: #dddddd;
+    }
+
+}
