@@ -60,7 +60,7 @@ function App() {
       color: 'purple'
     }
   ]
-  console.log(anchor)
+
   return (
     <div className="App">
       <NavBar 
@@ -71,65 +71,64 @@ function App() {
         postPerPage={postPerPage} 
         selectNumber={getAllElemets}/>
       <div className='container-table'>
-        {newLine && <NewLine anchor={anchor} selectOptions={options}/>}
+        {newLine && <>
+          <div className='anchor' ref={anchor}/>
+          <NewLine selectOptions={options}/>
+        </>}
         { currentPosts?.map(e => (
               <div key={e.id} className='container-line'>
+                  <Text 
+                    state={e.name}
+                    id={e.id} 
+                    />
 
-                <Text 
-                  state={e.name}
+                  <Number 
+                    state={e.number}
+                    id={e.id}
+                    />
+
+                  <Select 
+                    state={e.status}
+                    id={e.id}
+                    options={options}
+                    />
+
+                  <MultiSelect 
+                    state={e.multiple}
+                    options={options}
+                    id={e.id}
+                    />
+
+                  <Image 
+                    state={e.image}
+                    id={e.id}
+                    />
+
+                  <MultipleImage
+                    state={e.images}
+                    id={e.id}
+                    />
+                  <ImageAndText
+                    state={e.profile}
+                    id={e.id}
+                  />
+
+                  <Files 
+                    state={e.file}
+                    id={e.id}
+                    />
+
+                  <CheckBox
                   id={e.id} 
                   />
-
-                <Number 
-                  state={e.number}
-                  id={e.id}
+                  <Dates 
+                    id={e.id}
+                    state={e.date}
+                    />
+                  <ToggleSwitch
+                    id={e.id}
+                    status={e.state}
                   />
-
-                <Select 
-                  state={e.status}
-                  id={e.id}
-                  options={options}
-                  />
-
-                <MultiSelect 
-                  state={e.multiple}
-                  options={options}
-                  id={e.id}
-                  />
-
-                <Image 
-                  state={e.image}
-                  id={e.id}
-                  />
-
-                <MultipleImage
-                  state={e.images}
-                  id={e.id}
-                  />
-
-
-                <ImageAndText
-                  state={e.profile}
-                  id={e.id}
-                />
-
-                <Files 
-                  state={e.file}
-                  id={e.id}
-                  />
-
-                <CheckBox
-                id={e.id} 
-                />
-
-                <Dates 
-                  id={e.id}
-                  state={e.date}
-                  />
-                <ToggleSwitch
-                  id={e.id}
-                  status={e.state}
-                />
               </div>
             ))
         }
