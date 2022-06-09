@@ -46,3 +46,10 @@ export const removeSheetData = (id) => (dispatch) => {
         payload: id
     })
 }
+
+export const searchDataRange = (date) => (dispatch) => {
+    dispatch({
+        type: 'SEARCH_DATA_RANGE',
+        payload: date
+    })
+}

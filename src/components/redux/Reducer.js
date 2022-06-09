@@ -68,7 +68,19 @@ const initialState = {
                 ...state,
                 sheetData: removeData
             }
-
+        case 'SEARCH_DATA_RANGE':
+            const {startDate, endDate} = action.payload
+            let format;
+            let match = state.filter.filter(e => (e.date >= startDate.toJSON() && e.date <= endDate.toJSON()))
+            match.length && (format = match.sort((a,b)=> new Date(a.date) > new Date(b.date) ? 1 : -1 ))
+            console.log(format)
+            if(format.length){
+                return {
+                    ...state,
+                    table: format
+                }
+            }
+            
          default: 
              return state;
      }

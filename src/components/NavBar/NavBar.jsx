@@ -11,7 +11,7 @@ import arrows from '../../assets/arrows.svg'
 import logo from '../../assets/LOGO.svg'
 import searchIcon from '../../assets/search.svg'
 import { useDispatch, useSelector } from 'react-redux';
-import { onSearch } from '../redux/Actions';
+import { getData, onSearch } from '../redux/Actions';
 import * as XLSX from 'xlsx/xlsx.mjs'
 export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, newLine}) => {
     const dispatch = useDispatch()
@@ -37,6 +37,12 @@ export const NavBar = ({setPostPerPage, selectNumber, postPerPage, setNewLine, n
     const handleClickNew = () => {
         setNewLine(!newLine)
     }
+    // const handleClickDate = () => {
+    //     if(isOpenCalendar){
+    //         dispatch(getData())
+    //     }
+    //     setIsOpenCalendar(!isOpenCalendar)
+    // }
   return (
     <div className='nav-bar'>
         <div className='horizontal-line'> 
