@@ -46,6 +46,9 @@
             transform: scaleY(1);
         }
     };
+    .selected-container{
+        position: relative;
+    }
     .select-box{
         position: absolute;
         display: flex;
@@ -61,10 +64,20 @@
     }
     .container{
         width: 8em;
-        overflow-x: hidden;
-        &:hover{
-            overflow-x: scroll;
+        overflow-x: scroll;
+        height: 100%;
+        padding: .5em;
+        &::-webkit-scrollbar-thumb{
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+            transition: 0.3s;
+            &:hover{
+                background-color: #808493;
+                border-radius: 10px;
+                border: 3px solid #ffffff;
+            }
         }
+     
         .container-elements{
             width: 100%;
             display: flex;
@@ -77,5 +90,40 @@
         color: rgb(186, 186, 186);
         width: 100%;
         cursor: pointer;
+    }
+    .remove{
+        position: absolute;
+        max-width: 1em;
+        max-height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        z-index: 1;
+        border: none;
+        right: -5%;
+        top: -10%;
+        font-size: .6em;
+        cursor: pointer;
+        transition: 0.2s;
+        &:hover{
+            transform: scale(1.8);        
+        }
+    }
+    .green{
+        background-color: var(--light-green);
+        color: var(--green)
+    }
+    .green-apple{
+        background-color: var(--light-green-apple);
+        color: var(--green-apple)
+    }
+    .purple{
+        background-color: var(--light-purple);
+        color: var(--purple)
+    }
+    .yellow{
+        background-color: var(--light-yellow);
+        color: var(--dark-yellow)
     }
 }

@@ -69,16 +69,18 @@ export const MultiSelect = ({state, options, id, newInput, setNewInput}) => {
   return (
     <div className='container-categories'>
       <div className='container'>
-        <div className='container-elements' onClick={() => setIsEdit(true)}>
+        <div className='container-elements'>
           {!preview.length && <button className='plus'>+</button>}
               {preview?.map(element => {
                 let indexInput = preview.findIndex(i => i === element)
-                return <div key={indexInput}>
-                  <button className={`${element?.color}-button`} 
-                    onContextMenu={(e) => {
-                    e.preventDefault()
-                    remove(indexInput)}}>
-                    <p>{element?.text + ""}</p>
+                return <div key={indexInput} className='selected-container'>
+                  <button 
+                    onClick={() => remove(indexInput)}
+                    className={`remove ${element?.color}`}>x</button>
+                  <button 
+                    onClick={() => setIsEdit(true)}
+                    className={`${element?.color}-button`}>
+                    <p>{element?.text}</p>
                   </button>
                 </div>
               })
