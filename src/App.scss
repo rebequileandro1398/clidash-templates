@@ -13,10 +13,14 @@ App{
         position: absolute;
         top:0%
     }
+
+    label{
+        display: none;
+    }
     .container-line{
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(3, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
         grid-auto-rows: 3.625em;
         align-items: center;
         background: #F7F6FE;
@@ -24,12 +28,78 @@ App{
         grid-auto-flow: column;
         grid-auto-columns: minmax(10em,1fr);
     }
+    hr{
+        display: none;
+    }
 
+    @media (max-width: 550px){
+        .container-line{
+            grid-auto-rows: 8em;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas: 
+            "text number dates"
+            "select multipleimage multipleimage"
+            "files imageText imageText"
+            "multiselect multiselect multiselect"
+            "images checkbox toggle";
     
-    // @media (max-width: 540px){
-    //     .container-line{
-    //         grid-template-columns: repeat(3, 1fr);
-          
-    //     }
-    // }
+        }
+        label{
+            display: block;
+            font-weight: 300;
+            font-size: 0.7em;
+            color: rgb(105, 105, 105);
+            margin-bottom: .5em;
+        }
+        hr{
+            display: block;
+        }
+    }
+}
+@media (max-width: 550px){
+    .container-table{
+        margin-top: 6em;
+
+        .text{
+            grid-area: text;
+        }
+        .number{
+            grid-area: number;
+        }
+        .select{
+            grid-area: select;
+        }
+        .muiltiselect{
+            label{
+                margin-left: 1em;
+            }
+            grid-area: multiselect;
+        }
+        .image{
+            grid-area: images;
+        }
+        .multipleimage{
+            grid-area: multipleimage;
+        }
+        .image-text{
+            label{
+                margin-left: 3em;
+            }
+            grid-area: imageText;
+            display: flex;
+            flex-direction: column;
+        }
+        .files{
+            grid-area: files;
+        }
+        .checkbox{
+            grid-area: checkbox;
+        }
+        .dates{
+            grid-area: dates;
+        }
+        .toggle{
+            grid-area: toggle;
+        }
+    }
 }

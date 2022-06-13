@@ -49,3 +49,16 @@
         cursor: pointer;
     }   
 }
+@media (max-width: 550px){
+  .container-calendar-picker{
+    position: static;
+    box-shadow: none;
+    z-index: 9;
+    .react-datepicker{
+      transform: scale(1.3);
+    }
+    .isClosed{
+      display: none;
+    }
+  }
+}

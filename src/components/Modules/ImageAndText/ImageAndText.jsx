@@ -1,14 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './ImageAndText.scss'
 import { useDispatch } from 'react-redux'
 import camera from '../../../assets/Camera.svg'
 import { modify } from '../../redux/Actions'
-export const ImageAndText = ({ state, id , newInput, setNewInput}) => {
+export const ImageAndText = ({ state, id , newInput, setNewInput, mobileViewLabel}) => {
   const [isEdit, setIsEdit] = useState(false)
   const [input, setInput] = useState({
     photo: state ? state.photo : camera,
     name: state && state.name
   })
+  useEffect(() => {
+    if(!state && setNewInput) {
+      setNewInput({
+        ...newInput,
+        profile: input
+      })
+    }
+  }, [input])
 
   const dispatch = useDispatch()
   const fileRef = useRef()
@@ -26,15 +34,7 @@ export const ImageAndText = ({ state, id , newInput, setNewInput}) => {
                   photo: reader.result,
                   name: input.name
               }}))
-            } else {
-              setNewInput({
-                ...newInput,
-                profile:{  
-                  photo: reader.result,
-                  name: input.name
-              }
-            })
-          }
+            } 
         }
         reader.readAsDataURL(file)
       }
@@ -63,6 +63,8 @@ export const ImageAndText = ({ state, id , newInput, setNewInput}) => {
   }
 
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='container-image-text'>
           <img src={input.photo} alt="selleccione" onClick={(e)=> {
             e.preventDefault();
@@ -92,5 +94,6 @@ export const ImageAndText = ({ state, id , newInput, setNewInput}) => {
               }
           </div>
     </div>
+    </>
   )
 }

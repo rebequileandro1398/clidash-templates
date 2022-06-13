@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import camera from '../../../assets/Camera.svg'
 import { modify } from '../../redux/Actions'
 import './Image.scss'
-export const Image = ({edit, state, id, setNewInput, newInput}) => {
+export const Image = ({edit, state, id, setNewInput, newInput, mobileViewLabel}) => {
   const [preview, setPreview] = useState(state ? state : camera)
   const dispatch = useDispatch()
   const fileRef = useRef()
@@ -27,6 +27,8 @@ export const Image = ({edit, state, id, setNewInput, newInput}) => {
       }
   }
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='container-image'>
         <div> 
           <img src={preview} alt="selleccione" 
@@ -42,5 +44,6 @@ export const Image = ({edit, state, id, setNewInput, newInput}) => {
               />
         </div>
     </div>
+    </>
   )
 }

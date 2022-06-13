@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import { useDispatch } from 'react-redux';
 import { modify } from '../../redux/Actions';
 
-export const Dates = ({id, state,  setNewInput, newInput}) => {
+export const Dates = ({id, state,  setNewInput, newInput, mobileViewLabel}) => {
   const [startDate, setStartDate] = useState(state ? new Date(state && state) : new Date());
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch()
@@ -24,6 +24,8 @@ export const Dates = ({id, state,  setNewInput, newInput}) => {
 
 
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='date-container'>
       {
      !isOpen && state? 
@@ -43,5 +45,6 @@ export const Dates = ({id, state,  setNewInput, newInput}) => {
       </div>
       }
     </div>
+    </>
   )
 }

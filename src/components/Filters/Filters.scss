@@ -63,3 +63,11 @@
         color: #25223a;
       }
 }
+@media (max-width: 550px){
+  .filters-container{
+    position: static;
+    border: none;
+    box-shadow: none;
+    width: 20em;
+  }
+}

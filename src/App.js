@@ -73,63 +73,90 @@ function App() {
       <div className='container-table'>
         {newLine && <>
           <div className='anchor' ref={anchor}/>
-          <NewLine selectOptions={options}/>
+          <NewLine selectOptions={options} setNewLine={setNewLine}/>
         </>}
         { currentPosts?.map(e => (
+            <>
               <div key={e.id} className='container-line'>
-                  <Text 
+                <div className='text'>
+                  <Text
+                    mobileViewLabel={'Texto'}
                     state={e.name}
                     id={e.id} 
                     />
-
+                </div>
+                <div className='number'>
                   <Number 
+                     mobileViewLabel={'Numeros'}
                     state={e.number}
                     id={e.id}
                     />
-
+                </div>
+                <div className='select'>
                   <Select 
+                    mobileViewLabel={'Select'}
                     state={e.status}
                     id={e.id}
                     options={options}
-                    />
-
+                    />   
+                </div>
+                <div className='muiltiselect'>
                   <MultiSelect 
+                    mobileViewLabel={'Multiselect'}
                     state={e.multiple}
                     options={options}
                     id={e.id}
                     />
-
-                  <Image 
+                </div>
+                <div className='image'>
+                  <Image
+                     mobileViewLabel={'Imagen'}
                     state={e.image}
                     id={e.id}
                     />
-
+                </div>
+                <div className='multipleimage'>
                   <MultipleImage
+                     mobileViewLabel={'Multi Imagenes'}
                     state={e.images}
                     id={e.id}
                     />
+                </div>
+                <div className='image-text'>
                   <ImageAndText
+                     mobileViewLabel={'Imagen y Texto'}
                     state={e.profile}
                     id={e.id}
                   />
-
-                  <Files 
+                </div>
+                <div className='files'>
+                  <Files
+                    mobileViewLabel={'Archivo'}
                     state={e.file}
                     id={e.id}
                     />
-
+                </div>
+                <div className='checkbox'>
                   <CheckBox
-                  id={e.id} 
-                  />
+                    id={e.id} 
+                    />
+                </div>
+                <div className='dates'>
                   <Dates 
+                     mobileViewLabel={'Fechas'}
                     id={e.id}
                     state={e.date}
                     />
+                </div>
+                <div className='toggle'>
                   <ToggleSwitch
                     id={e.id}
                     status={e.state}
                   />
+                </div>
               </div>
+              <hr/>
+            </>
             ))
         }
       </div>

@@ -4,7 +4,7 @@ import { modify } from '../../redux/Actions'
 import './Select.scss'
 
 
-export const Select = ({ state, id, options, newInput, setNewInput}) => {
+export const Select = ({ state, id, options, newInput, setNewInput, mobileViewLabel}) => {
   const dispatch = useDispatch()
   const [input, setInput] = useState(state && state)
   const [isEdit, setIsEdit] = useState(false)
@@ -40,6 +40,8 @@ export const Select = ({ state, id, options, newInput, setNewInput}) => {
   }
 
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='container-categories'>
       <div>
        <div onClick={() => setIsEdit(true)}>
@@ -60,5 +62,6 @@ export const Select = ({ state, id, options, newInput, setNewInput}) => {
         </div>
       }
     </div>
+    </>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getData, searchDataRange } from '../redux/Actions';
 import './CalendarPicker.scss'
 

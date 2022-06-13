@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { modify } from '../../redux/Actions'
 import './Select.scss'
 
-export const MultiSelect = ({state, options, id, newInput, setNewInput}) => {
+export const MultiSelect = ({state, options, id, newInput, setNewInput, mobileViewLabel}) => {
 
   const [isEdit, setIsEdit] = useState(false)
   const dispatch = useDispatch()
@@ -67,10 +67,12 @@ export const MultiSelect = ({state, options, id, newInput, setNewInput}) => {
     } 
   }
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='container-categories'>
       <div className='container'>
         <div className='container-elements'>
-          {!preview.length && <button className='plus'>+</button>}
+          {!preview.length && <button className='plus' onClick={()=> setIsEdit(true)}>+</button>}
               {preview?.map(element => {
                 let indexInput = preview.findIndex(i => i === element)
                 return <div key={indexInput} className='selected-container'>
@@ -103,5 +105,6 @@ export const MultiSelect = ({state, options, id, newInput, setNewInput}) => {
         </div>
       }
     </div>
+    </>
   )
 }

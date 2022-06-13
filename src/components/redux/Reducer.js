@@ -17,12 +17,12 @@ const initialState = {
              }
         case 'SEARCH': 
             let result = state.table.filter(e => {
-                if(e.name.toString().toLowerCase().includes(action.payload.toLowerCase())
-                || e.number.toString().toLowerCase().includes(action.payload.toLowerCase())
-                || e.date.toString().toLowerCase().includes(action.payload.toLowerCase())
-                || e.multiple.toString().toLowerCase().includes(action.payload.toLowerCase())
-                || e.status.toString().toLowerCase().includes(action.payload.toLowerCase())
-                || e.profile.name.toString().toLowerCase().includes(action.payload.toLowerCase())
+                if(e.name?.toString().toLowerCase().includes(action.payload.toLowerCase())
+                || e.number?.toString().toLowerCase().includes(action.payload.toLowerCase())
+                || e.date?.toString().toLowerCase().includes(action.payload.toLowerCase())
+                || e.multiple?.toString().toLowerCase().includes(action.payload.toLowerCase())
+                || e.status?.toString().toLowerCase().includes(action.payload.toLowerCase())
+                || e.profile.name?.toString().toLowerCase().includes(action.payload.toLowerCase())
                 ) { return e; }
             })
             if(action.payload === '') result = []

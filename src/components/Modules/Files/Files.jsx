@@ -3,7 +3,7 @@ import './Files.scss'
 import { Input } from '../../Input/Input'
 import { useDispatch } from 'react-redux'
 import { modify } from '../../redux/Actions'
-export const Files = ({state, id, newInput,  setNewInput}) => {
+export const Files = ({state, id, newInput,  setNewInput, mobileViewLabel}) => {
   const [input, setInput] = useState(state && state)
   const dispatch = useDispatch()
   const fileRef = useRef()
@@ -29,6 +29,8 @@ export const Files = ({state, id, newInput,  setNewInput}) => {
   }
 
   return (
+    <>
+    <label>{mobileViewLabel}</label>
     <div className='container-file'>
       <div className='file' onClick={(e) => handleClick(e)}>
         <p>{input?.name ? input.name : null}</p>
@@ -41,5 +43,6 @@ export const Files = ({state, id, newInput,  setNewInput}) => {
         onChange={(e) => handleChange(e)}
         />
     </div>
+    </>
   )
 }
