@@ -131,7 +131,7 @@ function App() {
                 </div>
                 <div className='files'>
                   <Files
-                    mobileViewLabel={'Archivo'}
+                    mobileViewLabel={'Archivos'}
                     state={e.file}
                     id={e.id}
                     />
